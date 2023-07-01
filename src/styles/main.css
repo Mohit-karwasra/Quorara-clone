@@ -1,0 +1,5 @@
+.main-content {
+	display: flex;
+	margin-top: 30px;
+	gap: 5px;
+}

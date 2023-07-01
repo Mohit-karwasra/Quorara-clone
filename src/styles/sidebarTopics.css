@@ -1,6 +1,7 @@
 .sidebarTopics {
 	display: flex;
 	flex-direction: column;
+	margin-left: 5%;
 }
 
 .sidebarTopic {
