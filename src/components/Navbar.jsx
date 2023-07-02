@@ -9,8 +9,12 @@ import notification from "../assets/bell.png";
 import search from "../assets/magnifying-glass.png";
 import avatar from "../assets/man.png";
 import language from "../assets/globe.png";
+import { useSelector } from "react-redux";
+import { selectUser } from "../features/userSlice";
+import { auth } from "../config/firebase";
 
 export function Navbar() {
+	const user = useSelector(selectUser);
 	return (
 		<div className={styles["navbar"]}>
 			<div className={styles["logo-img-container"]}>
@@ -39,7 +43,12 @@ export function Navbar() {
 			</div>
 			<div className={styles["profile-language-button-container"]}>
 				<div className={styles["avatar-holder"]}>
-					<img src={avatar} alt="avatar" className={styles["avatar-img"]} />
+					<img
+						onClick={() => auth.signOut()}
+						src={user.photo}
+						alt="avatar"
+						className={styles["avatar-img"]}
+					/>
 				</div>
 				<img src={language} alt="language" className={styles["language-icon"]} />
 				<button className={styles["add-question-btn"]}>Add Question</button>

@@ -6,14 +6,17 @@ import downward from "../assets/down-arrow.png";
 import chat from "../assets/chat.png";
 import share from "../assets/recycle.png";
 import more from "../assets/more.png";
+import { useSelector } from "react-redux";
+import { selectUser } from "../features/userSlice";
 
 export function Post() {
+	const user = useSelector(selectUser);
 	return (
 		<div className="post">
 			<div className="post-info">
-				<img src={avatar} alt="avatar" />
+				<img src={user.photo} alt="avatar" />
 				<div className="post-username-day">
-					<h5> user name</h5>
+					<h5>{user.displayName}</h5>
 					<small>time stamp</small>
 				</div>
 			</div>

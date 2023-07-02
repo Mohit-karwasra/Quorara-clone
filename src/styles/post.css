@@ -14,6 +14,13 @@
 	gap: 18px;
 }
 
+.post-info > img {
+	border-radius: 50%;
+	width: 30px;
+	height: 30px;
+	opacity: 1;
+}
+
 .post-username-day > h5 {
 	cursor: pointer;
 	font-size: 15px;
