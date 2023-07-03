@@ -124,3 +124,86 @@
 	cursor: pointer;
 	background-color: #aa2200;
 }
+
+.addQuestion-modal {
+	min-width: 700px;
+	min-height: 600px;
+	z-index: 100;
+	background-color: rgb(255, 255, 255);
+	position: fixed;
+	top: 10vh;
+	left: 30vw;
+	padding: 40px;
+	border-radius: 30px;
+	display: flex;
+	flex-direction: column;
+	border: 1px solid #2e69ff;
+}
+
+.list-items {
+	background-color: #ebf0ff;
+	color: #2e69ff;
+	padding: 15px;
+}
+
+.modal-title {
+	border-bottom: 1px solid #2e69ff;
+}
+
+.modal-title > h5 {
+	font-size: x-large;
+	font-weight: 600;
+}
+
+.modal-info {
+	padding: 15px;
+	display: flex;
+	gap: 15px;
+	align-items: center;
+}
+
+.modal-info > img {
+	border-radius: 50%;
+	width: 35px;
+	height: 35px;
+}
+
+.modal-body > input {
+	width: 100%;
+	border-style: none;
+	border-bottom: 1px solid gray;
+	font-size: 15px;
+}
+
+.modal-cancelBtn-addBtn {
+	margin-top: auto;
+	display: flex;
+	justify-content: flex-end;
+	gap: 15px;
+}
+
+.modal-cancelBtn-addBtn > button:first-child {
+	background-color: #fff;
+	border: none;
+	font-size: large;
+	color: rgb(177, 177, 172);
+}
+
+.modal-cancelBtn-addBtn > button:first-child:hover {
+	cursor: pointer;
+	color: gray;
+}
+
+.addQuestionBtn {
+	background-color: #2e69ff;
+	color: #fff;
+	font-size: large;
+	border-radius: 20px;
+	border: none;
+	padding: 5px;
+}
+
+.addQuestionBtn:hover {
+	cursor: pointer;
+	opacity: 0.8;
+}

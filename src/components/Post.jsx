@@ -1,35 +1,33 @@
 import React from "react";
 import "../styles/post.css";
-import avatar from "../assets/man.png";
 import upward from "../assets/up.png";
 import downward from "../assets/down-arrow.png";
 import chat from "../assets/chat.png";
 import share from "../assets/recycle.png";
 import more from "../assets/more.png";
-import { useSelector } from "react-redux";
-import { selectUser } from "../features/userSlice";
+// import { useSelector } from "react-redux";
+// import { selectUser } from "../features/userSlice";
 
-export function Post() {
-	const user = useSelector(selectUser);
+export function Post({ Id, question, imageUrl, timestamp, users }) {
+	// const user = useSelector(selectUser);
+	// console.log(users);
+
 	return (
 		<div className="post">
 			<div className="post-info">
-				<img src={user.photo} alt="avatar" />
+				<img src={users.photo} alt="avatar" />
 				<div className="post-username-day">
-					<h5>{user.displayName}</h5>
-					<small>time stamp</small>
+					<h5>{users.displayName ? users.displayName : users.email}</h5>
+					<small>{new Date(timestamp?.toDate()).toLocaleString()}</small>
 				</div>
 			</div>
 			<div className="post-body">
 				<div className="post-question">
-					<p>Question</p>
+					<p>{question}</p>
 					<button className="post-answerBtn">Answer</button>
 				</div>
 				<div className="post-image">
-					<img
-						src="https://cdn.pixabay.com/photo/2018/09/23/18/30/drop-3698073_640.jpg"
-						alt="question"
-					/>
+					<img src={imageUrl} alt="question" />
 				</div>
 				<div className="post-answer">
 					<p>Answers para</p>
