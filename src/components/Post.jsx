@@ -50,6 +50,7 @@ export function Post({ Id, answer, question, imageUrl, timestamp, users }) {
 								{answer}
 								<br />
 							</span>
+							<img src={imageUrl} alt="answer image" className="answer__image"/>
 						</p>
 					</div>
 				</>

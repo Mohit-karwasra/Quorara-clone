@@ -51,6 +51,7 @@ export const QuestionsBox = () => {
 		addDoc(collection(db, "Newanswers"), {
 			questionId: question.id, // Update the property name to `question.id`
 			question: question.data.question,
+			imageUrl: link,
 			answer: answer,
 			user: user,
 			timestamp: serverTimestamp(),

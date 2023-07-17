@@ -39,7 +39,7 @@ export function Feed() {
 				<Post
 					key={id}
 					Id={id}
-					// imageUrl={data.imageUrl}
+					imageUrl={answers.imageUrl}
 					answer={answers.answer}
 					question={answers.question}
 					timestamp={answers.timestamp}
