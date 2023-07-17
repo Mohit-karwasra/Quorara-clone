@@ -5,13 +5,13 @@ import downward from "../assets/down-arrow.png";
 import chat from "../assets/chat.png";
 import share from "../assets/recycle.png";
 import more from "../assets/more.png";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setQuestionInfo } from "../features/questionSlice.js";
 
-import { selectUser } from "../features/userSlice";
+// import { selectUser } from "../features/userSlice";
 
 export function Post({ Id, answer, question, imageUrl, timestamp, users }) {
-	const user = useSelector(selectUser);
+	// const user = useSelector(selectUser);
 
 	const dispatch = useDispatch();
 
@@ -50,7 +50,7 @@ export function Post({ Id, answer, question, imageUrl, timestamp, users }) {
 								{answer}
 								<br />
 							</span>
-							<img src={imageUrl} alt="answer image" className="answer__image"/>
+							<img src={imageUrl} alt="answer" className="answer__image" />
 						</p>
 					</div>
 				</>
