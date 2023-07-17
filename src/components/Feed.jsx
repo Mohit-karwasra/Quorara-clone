@@ -9,38 +9,41 @@ export function Feed() {
 	const [posts, setPosts] = useState([]);
 
 	useEffect(() => {
-		const fetchPosts = async () => {
+		const fetchAnswers = async () => {
+			// if (questionId) {
 			try {
-				const questionsCollectionRef = collection(db, "questions");
-				const q = query(questionsCollectionRef, orderBy("timestamp", "desc"));
-				const unsubscribe = onSnapshot(q, (snapshot) => {
-					const fetchedPosts = snapshot.docs.map((doc) => ({
+				const answersRef = collection(db, "Newanswers");
+				const answersQuery = query(answersRef, orderBy("timestamp", "desc"));
+				const unsubscribe = onSnapshot(answersQuery, (snapshot) => {
+					const answers = snapshot.docs.map((doc) => ({
 						id: doc.id,
-						data: doc.data(),
+						answers: doc.data(),
 					}));
-					setPosts(fetchedPosts);
-				});
 
-				return () => unsubscribe(); // Clean up the subscription when the component unmounts
+					setPosts(answers);
+				});
+				return unsubscribe;
 			} catch (error) {
-				console.log("Error fetching posts:", error);
+				console.error("Error fetching answers:", error);
 			}
+			// }
 		};
 
-		fetchPosts();
+		fetchAnswers();
 	}, []);
 
 	return (
 		<div className="feed-container">
 			<FeedProfileBox />
-			{posts.map(({ id, data }) => (
+			{posts.map(({ id, answers }) => (
 				<Post
 					key={id}
 					Id={id}
-					question={data.question}
-					imageUrl={data.imageUrl}
-					timestamp={data.timestamp}
-					users={data.user}
+					// imageUrl={data.imageUrl}
+					answer={answers.answer}
+					question={answers.question}
+					timestamp={answers.timestamp}
+					users={answers.user}
 				/>
 			))}
 		</div>

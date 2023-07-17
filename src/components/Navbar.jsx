@@ -29,7 +29,7 @@ export function Navbar() {
 		addDoc(questionsCollectionRef, {
 			user: user,
 			question: questionInput,
-			imageUrl: questionImageUrl,
+			// imageUrl: questionImageUrl,
 			timestamp: serverTimestamp(),
 		})
 			.then(() => {
@@ -106,11 +106,11 @@ export function Navbar() {
 							type="text"
 							placeholder="Start your question with 'What', 'How', 'Why', etc."
 						/>
-						<input
+						{/* <input
 							value={questionImageUrl}
 							onChange={(e) => setQuestionImageUrl(e.target.value)}
 							placeholder="Enter image url for reference"
-						/>
+						/> */}
 					</div>
 					<div className={styles["modal-cancelBtn-addBtn"]}>
 						<button onClick={() => setOpenModal(false)}>Cancel</button>

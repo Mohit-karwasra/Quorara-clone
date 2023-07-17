@@ -3,7 +3,7 @@ import "../styles/main.css";
 import { Navbar } from "./Navbar";
 import { Sidebar } from "./Sidebar";
 import { Feed } from "./Feed";
-import { AdBox } from "./AdBox";
+import { QuestionsBox } from "./QuestionsBox";
 
 export function Main() {
 	return (
@@ -12,7 +12,7 @@ export function Main() {
 			<div className="main-content">
 				<Sidebar />
 				<Feed />
-				<AdBox />
+				<QuestionsBox />
 			</div>
 		</div>
 	);

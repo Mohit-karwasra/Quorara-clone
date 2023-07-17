@@ -1,8 +1,6 @@
-.adBox {
+.question-box {
 	flex: 0.2;
 	margin-left: 20px;
-	display: flex;
-	flex-direction: column;
 	padding: 10px;
 	margin-right: 20px;
 	border: 1px solid lightgray;
@@ -11,12 +9,13 @@
 	background-color: white;
 }
 
-.adBox-header {
+.question-box-header {
 	border-bottom: 1px solid lightgray;
 	text-align: center;
 }
 
-.adBox-ad > img {
-	width: 100%;
-	height: auto;
+.question-box__question {
+	margin-top: 8px;
+	display: flex;
+	justify-content: space-between;
 }
