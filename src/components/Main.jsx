@@ -10,7 +10,9 @@ export function Main() {
 		<div id="main-container">
 			<Navbar />
 			<div className="main-content">
-				<Sidebar />
+				<div className="main-sidebar-container">
+					<Sidebar />
+				</div>
 				<Feed />
 				<QuestionsBox />
 			</div>

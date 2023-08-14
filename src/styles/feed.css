@@ -1,5 +1,20 @@
+/* .feed-container {
+	display: flex;
+	flex-direction: column;
+	flex: 0.6;
+} */
+
+/* Default styles for feed container */
 .feed-container {
 	display: flex;
 	flex-direction: column;
 	flex: 0.6;
+}
+
+/* Media query for screens with a maximum width of 768px (adjust as needed) */
+@media (max-width: 768px) {
+	.feed-container {
+		flex: 1;
+		width: 90%; /* Ensure it takes full width */
+	}
 }

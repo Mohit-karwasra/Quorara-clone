@@ -4,13 +4,19 @@ import answer from "../assets/writing_5812594.png";
 import question from "../assets/conversation.png";
 import { useSelector } from "react-redux";
 import { selectUser } from "../features/userSlice";
+import man from "../assets/man.png";
 
 export function FeedProfileBox() {
 	const user = useSelector(selectUser);
 	return (
 		<div className="feedProfileBox">
 			<div className="feedProfileBox-info">
-				<img src={user.photo} alt="avatar" className="avatar-img" />
+				{user.photo ? (
+					<img src={user.photo} alt="avatar" className="avatar-img" />
+				) : (
+					<img src={man} alt="avatar" className="avatar-img" />
+				)}
+
 				<div>What do you want to ask or share?</div>
 			</div>
 			<div className="feedProfileBox-buttons">

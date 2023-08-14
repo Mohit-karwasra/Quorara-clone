@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/questionsBox.css";
-import { useEffect } from "react";
 import {
 	addDoc,
 	collection,
@@ -20,6 +19,7 @@ export const QuestionsBox = () => {
 	const [answer, setAnswer] = useState("");
 	const [qToA, setQToA] = useState({});
 	const [link, setLink] = useState("");
+	const [isCollapsed, setIsCollapsed] = useState(true);
 
 	const user = useSelector(selectUser);
 
@@ -49,7 +49,7 @@ export const QuestionsBox = () => {
 		e.preventDefault();
 
 		addDoc(collection(db, "Newanswers"), {
-			questionId: question.id, // Update the property name to `question.id`
+			questionId: question.id,
 			question: question.data.question,
 			imageUrl: link,
 			answer: answer,
@@ -66,17 +66,23 @@ export const QuestionsBox = () => {
 			});
 	};
 
+	const toggleCollapse = () => {
+		setIsCollapsed(!isCollapsed);
+	};
+
 	return (
-		<div className="question-box">
-			<div className="question-box-header">
-				<h5>This section contains questions</h5>
+		<div className={`question-box ${isCollapsed ? "" : "expanded"}`}>
+			<div className="question-box-header" onClick={toggleCollapse}>
+				<span>{isCollapsed ? "☰" : "✕"}</span>
 			</div>
-			<div>
+			<div className={`question-box__question ${isCollapsed ? "" : "expanded"}`}>
+				<h5>Questions</h5>
 				{questions.map((question) => (
-					<div className="question-box__question">
+					<div className="question-box__question" key={question.id}>
 						<h3>{question.data.question}</h3>
 						<button
 							onClick={() => {
+								setIsCollapsed(true);
 								setIsModalOpen(true);
 								setQToA(question);
 							}}
@@ -92,9 +98,10 @@ export const QuestionsBox = () => {
 						onRequestClose={() => setIsModalOpen(false)}
 						className="answer-modal"
 					>
-						{/* {console.log(qToA)} */}
 						<div className="modal__question">
-							<h1>{qToA.data.question}</h1>
+							<div>
+								<h1>{qToA.data.question}</h1>
+							</div>
 							<p>
 								asked by{" "}
 								<span className="name">

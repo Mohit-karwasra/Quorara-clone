@@ -43,7 +43,7 @@ export function Feed() {
 					answer={answers.answer}
 					question={answers.question}
 					timestamp={answers.timestamp}
-					users={answers.user}
+					user={answers.user}
 				/>
 			))}
 		</div>

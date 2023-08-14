@@ -8,6 +8,7 @@ import spaces from "../assets/people.png";
 import notification from "../assets/bell.png";
 import search from "../assets/magnifying-glass.png";
 import language from "../assets/globe.png";
+import man from "../assets/man.png";
 import { useSelector } from "react-redux";
 import { selectUser } from "../features/userSlice";
 import { auth, db } from "../config/firebase";
@@ -61,68 +62,79 @@ export function Navbar() {
 					<img src={notification} alt="notification icon" className={styles["icon-img"]} />
 				</div>
 			</div>
-			<div className={styles["search-input"]}>
-				<img src={search} alt="search-icon" className={styles["search-icon"]} />
-				<input type="text" placeholder="Search Quora" className={styles["input"]} />
-			</div>
-			<div className={styles["profile-language-button-container"]}>
-				<div className={styles["avatar-holder"]}>
-					<img
-						onClick={() => auth.signOut()}
-						src={user.photo}
-						alt="avatar"
-						className={styles["avatar-img"]}
-					/>
+			<div className={styles["second-half-container"]}>
+				<div className={styles["search-input"]}>
+					<img src={search} alt="search-icon" className={styles["search-icon"]} />
+					<input type="text" placeholder="Search Quora" className={styles["input"]} />
 				</div>
-				<img src={language} alt="language" className={styles["language-icon"]} />
-				<button onClick={() => setOpenModal(true)} className={styles["add-question-btn"]}>
-					Add Question
-				</button>
-				<Modal
-					className={styles["addQuestion-modal"]}
-					isOpen={openModal}
-					onRequestClose={() => setOpenModal(false)}
-				>
-					<div className={styles["modal-title"]}>
-						<h5>Add Question</h5>
+				<div className={styles["profile-language-button-container"]}>
+					<div className={styles["avatar-holder"]}>
+						{user.photo ? (
+							<img
+								onClick={() => auth.signOut()}
+								src={user.photo}
+								alt="avatar"
+								className={styles["avatar-img"]}
+							/>
+						) : (
+							<img
+								onClick={() => auth.signOut()}
+								src={man}
+								alt="avatar"
+								className={styles["avatar-img"]}
+							/>
+						)}
 					</div>
-					<div className={styles["modal-body"]}>
-						<div className={styles["list-items"]}>
-							<ul>
-								Tips on getting good answers quickly
-								<li>Make sure your question has not been asked already </li>
-								<li>Keep your question short and to the point</li>
-								<li> Double-check grammar and spelling</li>
-							</ul>
+					<img src={language} alt="language" className={styles["language-icon"]} />
+					<button onClick={() => setOpenModal(true)} className={styles["add-question-btn"]}>
+						Add Question
+					</button>
+					<Modal
+						className={styles["addQuestion-modal"]}
+						isOpen={openModal}
+						onRequestClose={() => setOpenModal(false)}
+					>
+						<div className={styles["modal-title"]}>
+							<h5>Add Question</h5>
 						</div>
-						<div className={styles["modal-info"]}>
-							<img src={user.photo} alt="avatar" />
-							<p>{user.displayName ? user.displayName : user.email}</p>
-						</div>
-						<input
-							required
-							value={questionInput}
-							onChange={(e) => setQuestionInput(e.target.value)}
-							type="text"
-							placeholder="Start your question with 'What', 'How', 'Why', etc."
-						/>
-						{/* <input
+						<div className={styles["modal-body"]}>
+							<div className={styles["list-items"]}>
+								<ul>
+									Tips on getting good answers quickly
+									<li>Make sure your question has not been asked already </li>
+									<li>Keep your question short and to the point</li>
+									<li> Double-check grammar and spelling</li>
+								</ul>
+							</div>
+							<div className={styles["modal-info"]}>
+								<img src={user.photo} alt="avatar" />
+								<p>{user.displayName ? user.displayName : user.email}</p>
+							</div>
+							<input
+								required
+								value={questionInput}
+								onChange={(e) => setQuestionInput(e.target.value)}
+								type="text"
+								placeholder="Start your question with 'What', 'How', 'Why', etc."
+							/>
+							{/* <input
 							value={questionImageUrl}
 							onChange={(e) => setQuestionImageUrl(e.target.value)}
 							placeholder="Enter image url for reference"
 						/> */}
-					</div>
-					<div className={styles["modal-cancelBtn-addBtn"]}>
-						<button onClick={() => setOpenModal(false)}>Cancel</button>
-						<button
-							onClick={(e) => handleSubmit(e)}
-							className={styles["addQuestionBtn"]}
-							type="submit"
-						>
-							Add Question
-						</button>
-					</div>
-				</Modal>
+						</div>
+						<div className={styles["modal-cancelBtn-addBtn"]}>
+							<button onClick={() => setOpenModal(false)}>Cancel</button>
+							<button
+								onClick={(e) => handleSubmit(e)}
+								className={styles["addQuestionBtn"]}
+								type="submit"
+							>
+								Add Question
+							</button>
+						</div>
+					</Modal>
+				</div>
 			</div>
 		</div>
 	);

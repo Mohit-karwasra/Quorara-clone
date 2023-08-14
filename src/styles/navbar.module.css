@@ -43,7 +43,6 @@
 
 .icon:hover {
 	cursor: pointer;
-	border-color: #aa2200;
 	background-color: rgb(235, 233, 233);
 }
 
@@ -77,6 +76,12 @@
 	margin-right: 20px;
 	justify-content: center;
 	align-items: center;
+}
+
+.second-half-container {
+	display: flex;
+	justify-content: space-between;
+	width: 50%;
 }
 
 .search-input {
@@ -207,3 +212,79 @@
 	cursor: pointer;
 	opacity: 0.8;
 }
+
+/* Sample media query for screens with a maximum width of 768px (adjust as needed) */
+@media (max-width: 768px) {
+	.navbar {
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
+		padding: 10px 5px;
+	}
+
+	.icons-container {
+		justify-content: space-between;
+		margin-left: auto;
+		margin-right: auto;
+		width: 100%;
+	}
+
+	.icon {
+		border-bottom: none;
+	}
+
+	.second-half-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		padding: 0 20%;
+	}
+
+	.search-input {
+		max-width: 50%;
+		flex-shrink: 3;
+	}
+
+	.add-question-btn {
+		font-size: 16px;
+		padding: 8px 15px;
+	}
+
+	/* Add more specific styles to further adjust the appearance on mobile */
+	/* For example, hide some elements or adjust font sizes */
+
+	.addQuestion-modal {
+		max-width: 80vw;
+		max-height: 80vh;
+		z-index: 100;
+		background-color: rgb(255, 255, 255);
+		position: fixed;
+		top: 25vh;
+		left: 5vw;
+		padding: 10px;
+		border-radius: 20px;
+		display: flex;
+		flex-direction: column;
+		border: 1px solid #2e69ff;
+	}
+
+	.modal-body > input {
+		width: 100%;
+	}
+
+	.modal-info > img {
+		max-width: 8vw;
+	}
+
+	.modal-title > h5 {
+		font-size: large;
+	}
+
+	.addQuestionBtn {
+		font-size: medium;
+		padding: 5px;
+	}
+}
+
+/* Additional global styles for mobile responsiveness */
