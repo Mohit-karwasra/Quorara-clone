@@ -20,8 +20,13 @@ export function Navbar() {
 	const [openModal, setOpenModal] = useState(false);
 	const [questionInput, setQuestionInput] = useState("");
 	const [questionImageUrl, setQuestionImageUrl] = useState("");
+	const [showDropdown, setShowDropdown] = useState(false);
 
 	const questionsCollectionRef = collection(db, "questions");
+
+	const handleAvatarClick = () => {
+		setShowDropdown(!showDropdown); // Toggle the dropdown visibility when avatar is clicked
+	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -38,6 +43,12 @@ export function Navbar() {
 				setQuestionImageUrl("");
 			})
 			.catch((err) => console.error(err));
+	};
+
+	const handleLogout = () => {
+		// Implement your logout logic here
+		auth.signOut();
+		setShowDropdown(false); // Close the dropdown after logout
 	};
 
 	return (
@@ -68,21 +79,18 @@ export function Navbar() {
 					<input type="text" placeholder="Search Quora" className={styles["input"]} />
 				</div>
 				<div className={styles["profile-language-button-container"]}>
-					<div className={styles["avatar-holder"]}>
+					<div className={styles["avatar-holder"]} onClick={handleAvatarClick}>
 						{user.photo ? (
-							<img
-								onClick={() => auth.signOut()}
-								src={user.photo}
-								alt="avatar"
-								className={styles["avatar-img"]}
-							/>
+							<img src={user.photo} alt="avatar" className={styles["avatar-img"]} />
 						) : (
-							<img
-								onClick={() => auth.signOut()}
-								src={man}
-								alt="avatar"
-								className={styles["avatar-img"]}
-							/>
+							<img src={man} alt="avatar" className={styles["avatar-img"]} />
+						)}
+
+						{/* Dropdown menu */}
+						{showDropdown && (
+							<div className={styles["dropdown-menu"]}>
+								<button onClick={handleLogout}>Logout</button>
+							</div>
 						)}
 					</div>
 					<img src={language} alt="language" className={styles["language-icon"]} />
