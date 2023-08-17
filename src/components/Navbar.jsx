@@ -107,7 +107,7 @@ export function Navbar() {
 								</ul>
 							</div>
 							<div className={styles["modal-info"]}>
-								<img src={user.photo} alt="avatar" />
+								<img src={user.photo ? user.photo : man} alt="avatar" />
 								<p>{user.displayName ? user.displayName : user.email}</p>
 							</div>
 							<input

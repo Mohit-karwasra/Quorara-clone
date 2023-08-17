@@ -31,7 +31,7 @@ export function Post({ Id, answer, question, imageUrl, timestamp, user }) {
 			<div className="post-answer">
 				<>
 					<div className="post-info">
-						<img src={user.photo !== null ? user.photo : avatar} alt="avatar" />
+						<img src={user.photo !== null ? `${user.photo}` : `${avatar}`} />
 						<div className="post-username-day">
 							<h5>{user.displayName ? user.displayName : user.email}</h5>
 							<small>{new Date(timestamp?.toDate()).toLocaleString()}</small>
