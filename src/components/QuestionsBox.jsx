@@ -73,7 +73,10 @@ export const QuestionsBox = () => {
 	return (
 		<div className={`question-box ${isCollapsed ? "" : "expanded"}`}>
 			<div className="question-box-header" onClick={toggleCollapse}>
-				<span>{isCollapsed ? "☰" : "✕"}</span>
+				<span>
+					{isCollapsed ? "☰ " : "✕"}
+					<span className="question-box-collapsable-name"> Questions</span>
+				</span>
 			</div>
 			<div className={`question-box__question ${isCollapsed ? "" : "expanded"}`}>
 				<h5>Questions</h5>

@@ -76,6 +76,10 @@
 		border-bottom: 1px solid lightgray;
 	}
 
+	.question-box-collapsable-name {
+		display: none;
+	}
+
 	.answer-modal {
 		z-index: 100;
 		background-color: rgb(255, 255, 255);

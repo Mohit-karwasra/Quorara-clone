@@ -2,10 +2,9 @@
 	display: flex;
 	justify-content: center;
 	gap: 10px;
-	padding: 5% 5%; /* Default padding for mobile view */
+	padding: 2% 5%;
 }
 
-/* Media query for larger screens */
 @media (max-width: 768px) {
 	.main-sidebar-container {
 		display: none;
